@@ -2,6 +2,7 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 from groq import Groq
+import vectorstore as vs
 
 load_dotenv()
 
@@ -20,4 +21,5 @@ if question:
       model="whisper-large-v3",
       response_format="verbose_json"
     )
+
     print(transcription.text)
