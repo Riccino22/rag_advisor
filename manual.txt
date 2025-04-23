@@ -1,0 +1,182 @@
+**Nombre de la Empresa:** InnovaTech Solutions
+
+**Rubro:** Consultora de tecnología especializada en soluciones de software a medida e implementación de estrategias de transformación digital para pequeñas y medianas empresas.
+
+**Cultura y Valores:** Innovación, Colaboración, Orientación al Cliente, Aprendizaje Continuo, Transparencia.
+
+**Misión:** Empoderar a las PYMEs a través de tecnología accesible y estratégica, impulsando su crecimiento y eficiencia en la era digital.
+
+**Visión:** Ser el socio tecnológico líder para las PYMEs en Latinoamérica, reconocidos por nuestra excelencia, confianza y el impacto positivo en los negocios de nuestros clientes.
+
+Ahora, estructuraremos el manual:
+
+**Manual del Empleado de InnovaTech Solutions**
+
+**Versión 1.0**
+
+**Fecha de Emisión:** 23 de abril de 2025
+
+**Preparado por:** Departamento de Recursos Humanos
+
+-----
+
+**Tabla de Contenidos**
+
+1.  **Bienvenida a InnovaTech Solutions**
+
+      * Mensaje del Director Ejecutivo
+      * Nuestra Misión, Visión y Valores
+      * Breve Historia de la Empresa
+      * Estructura Organizacional
+
+2.  **Tu Inicio en InnovaTech**
+
+      * Proceso de Onboarding
+      * Documentación Necesaria
+      * Inducción y Capacitación Inicial
+      * Recursos y Herramientas de Trabajo
+
+3.  **Nuestra Cultura y Ambiente Laboral**
+
+      * Comunicación Interna
+      * Trabajo en Equipo y Colaboración
+      * Diversidad e Inclusión
+      * Actividades y Eventos de la Empresa
+
+4.  **Procesos Clave de InnovaTech**
+
+      * **Proceso de Gestión de Proyectos:**
+          * Metodología (Ej: Agile/Scrum)
+          * Herramientas de Gestión de Proyectos (Ej: Jira, Trello)
+          * Fases del Proyecto (Inicio, Planificación, Ejecución, Seguimiento y Control, Cierre)
+          * Roles y Responsabilidades
+      * **Proceso de Desarrollo de Software:**
+          * Ciclo de Vida del Desarrollo (SDLC)
+          * Buenas Prácticas de Codificación
+          * Control de Versiones (Ej: Git)
+          * Proceso de Pruebas y Control de Calidad
+      * **Proceso de Atención al Cliente:**
+          * Canales de Comunicación
+          * Protocolos de Respuesta
+          * Gestión de Incidencias y Soporte
+          * Encuestas de Satisfacción
+      * **Proceso de Gestión de Recursos Humanos:**
+          * Gestión del Desempeño y Evaluaciones
+          * Desarrollo Profesional y Capacitación Continua
+          * Proceso de Nómina y Beneficios
+          * Gestión de Solicitudes y Permisos
+
+5.  **Políticas de la Empresa**
+
+      * Código de Conducta y Ética
+      * Política de Uso de Recursos Tecnológicos
+      * Política de Confidencialidad y Protección de Datos
+      * Política de Seguridad de la Información
+      * Política de Viajes y Gastos
+      * Política de Vacaciones y Ausencias
+      * Política de Salud y Seguridad en el Trabajo
+
+6.  **Beneficios y Compensaciones**
+
+      * Salario y Revisiones Salariales
+      * Seguro Médico y Otros Seguros
+      * Planes de Ahorro y Jubilación
+      * Beneficios Adicionales (Ej: capacitaciones, descuentos)
+
+7.  **Preguntas Frecuentes (FAQ)**
+
+8.  **Contacto y Soporte**
+
+      * Departamento de Recursos Humanos
+      * Departamento de TI
+      * Otros Contactos Clave
+
+-----
+
+Ahora, procedamos a detallar algunos de los apartados, incluyendo ejemplos de procesos y preguntas frecuentes.
+
+-----
+
+**Extracto del Manual del Empleado de InnovaTech Solutions**
+
+**(Sección 1. Bienvenida a InnovaTech Solutions)**
+
+**Mensaje del Director Ejecutivo**
+
+"¡Bienvenido/a a InnovaTech Solutions\! Estamos encantados de que te unas a nuestro equipo. En InnovaTech, creemos en el poder transformador de la tecnología y en el potencial ilimitado de las pequeñas y medianas empresas. Nuestra misión es ser el catalizador de su éxito en el entorno digital, y para lograrlo, contamos con personas apasionadas, talentosas y comprometidas como tú. Este manual ha sido diseñado para ser tu guía en este nuevo camino, para ayudarte a comprender nuestra cultura, nuestros procesos y lo que significa ser parte de la familia InnovaTech. Te animo a explorarlo y a sumergirte en todo lo que nuestra empresa tiene para ofrecer. Juntos, innovaremos, colaboraremos y generaremos un impacto real en el mundo empresarial. ¡Bienvenido/a a bordo\!"
+
+**(Sección 4. Procesos Clave de InnovaTech)**
+
+**Proceso de Gestión de Proyectos (Metodología Ágil - Scrum)**
+
+En InnovaTech Solutions, utilizamos la metodología Scrum para la gestión de la mayoría de nuestros proyectos de desarrollo de software. Este enfoque iterativo e incremental nos permite ser flexibles, adaptarnos rápidamente a los cambios y entregar valor de manera continua a nuestros clientes.
+
+  * **Roles Clave:**
+
+      * **Product Owner:** Representa los intereses del cliente, define y prioriza el Backlog del Producto.
+      * **Scrum Master:** Facilita el proceso Scrum, elimina impedimentos y asegura que el equipo siga las prácticas ágiles.
+      * **Equipo de Desarrollo:** Grupo auto-organizado y multifuncional responsable de entregar el incremento de producto al final de cada Sprint.
+
+  * **Eventos Clave (Ceremonias Scrum):**
+
+      * **Sprint Planning:** Reunión al inicio del Sprint para planificar el trabajo a realizar.
+      * **Daily Scrum:** Reunión diaria corta para sincronizar actividades y planificar el trabajo de las próximas 24 horas.
+      * **Sprint Review:** Reunión al final del Sprint para inspeccionar el incremento y adaptar el Backlog del Producto si es necesario.
+      * **Sprint Retrospective:** Reunión al final del Sprint para que el equipo inspeccione cómo trabajar juntos y planificar mejoras para el próximo Sprint.
+
+  * **Artefactos Clave:**
+
+      * **Backlog del Producto:** Lista priorizada de funcionalidades o requisitos del producto.
+      * **Backlog del Sprint:** Subconjunto de elementos del Backlog del Producto seleccionados para un Sprint.
+      * **Incremento:** La suma de todos los elementos del Backlog del Producto completados durante un Sprint y los Sprints anteriores.
+
+**Proceso de Atención al Cliente (Gestión de Incidencias)**
+
+Nuestro objetivo es brindar un soporte eficiente y de calidad a nuestros clientes. Seguimos el siguiente proceso para la gestión de incidencias:
+
+1.  **Recepción de la Incidencia:** El cliente reporta una incidencia a través de nuestros canales de soporte (correo electrónico, teléfono, plataforma de soporte).
+2.  **Registro y Clasificación:** La incidencia es registrada en nuestro sistema de tickets y clasificada según su prioridad e impacto.
+3.  **Diagnóstico Inicial:** El equipo de soporte realiza un diagnóstico inicial para identificar la naturaleza del problema.
+4.  **Asignación:** La incidencia es asignada al miembro del equipo más adecuado para resolverla.
+5.  **Resolución:** El especialista trabaja en la resolución de la incidencia.
+6.  **Comunicación con el Cliente:** Se mantiene al cliente informado sobre el estado y la resolución de su incidencia.
+7.  **Verificación y Cierre:** Una vez resuelta, se verifica la solución con el cliente y se cierra el ticket.
+8.  **Seguimiento (Opcional):** En casos relevantes, se realiza un seguimiento posterior para asegurar la satisfacción del cliente.
+
+**(Sección 7. Preguntas Frecuentes (FAQ))**
+
+Aquí encontrarás respuestas a algunas de las preguntas más comunes que podrías tener:
+
+  * **¿Cuál es el horario de trabajo flexible en InnovaTech?**
+
+      * Ofrecemos flexibilidad horaria siempre y cuando se cumplan las 8 horas diarias y se coordinen las tareas con el equipo. Se espera disponibilidad durante las horas pico de colaboración del equipo.
+
+  * **¿Cómo solicito vacaciones o permisos?**
+
+      * Las solicitudes de vacaciones y permisos se gestionan a través de nuestra plataforma interna de RRHH. Debes enviar tu solicitud con al menos dos semanas de anticipación para vacaciones y con la mayor antelación posible para otros permisos, justificando la razón si aplica.
+
+  * **¿Existe algún programa de desarrollo profesional o capacitación?**
+
+      * Sí, en InnovaTech fomentamos el aprendizaje continuo. Contamos con un presupuesto anual para capacitación por empleado y acceso a plataformas de aprendizaje en línea. Habla con tu líder de equipo para explorar opciones.
+
+  * **¿Con quién me contacto si tengo un problema técnico con mi equipo de trabajo?**
+
+      * Puedes contactar al Departamento de TI a través del correo electrónico [dirección de correo electrónico eliminada] o llamando a la extensión XXX.
+
+  * **¿Cuál es la política de vestimenta en la oficina?**
+
+      * InnovaTech tiene un código de vestimenta casual de negocios. Buscamos un ambiente cómodo pero profesional. Se espera vestimenta adecuada para reuniones con clientes, si las hubiera.
+
+  * **¿Cómo se maneja la comunicación interna?**
+
+      * Utilizamos Slack para la comunicación diaria del equipo y anuncios generales. Las reuniones se coordinan a través de Google Calendar y las comunicaciones formales se realizan por correo electrónico. Fomentamos la comunicación abierta y transparente.
+
+  * **¿Puedo trabajar de forma remota?**
+
+      * Sí, InnovaTech tiene una política de trabajo híbrido flexible. La posibilidad y frecuencia del trabajo remoto se coordina con tu líder de equipo, considerando las necesidades del proyecto y del equipo.
+
+  * **¿Cómo se evalúa mi desempeño?**
+
+      * Realizamos evaluaciones de desempeño semestrales donde se revisan tus objetivos, logros y áreas de desarrollo. También hay revisiones informales continuas con tu líder de equipo.
+
+-----
