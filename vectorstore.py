@@ -11,6 +11,7 @@ from langchain_community.vectorstores import Chroma
 
 load_dotenv()
 
+chat_model = ChatGroq(model_name="meta-llama/llama-4-maverick-17b-128e-instruct")
 # Generate chunks
 def get_text_chunks():
 
@@ -29,15 +30,14 @@ def get_text_chunks():
 
 # create the vectorstore
 
-def get_vectorstore():
+def get_vectorstore(chunks):
 
     persist_directory = "./chroma_db"
     embeddings_model = SentenceTransformerEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
-    vectorstore = Chroma(persist_directory=persist_directory, embedding_function=embeddings_model)
+    vectorstore = Chroma.from_texts(texts=chunks, embedding=embeddings_model, persist_directory=persist_directory)
     return vectorstore
 
 def get_conversation_chain(vectorstore):
-    chat_model = ChatGroq(model_name="meta-llama/llama-4-maverick-17b-128e-instruct")
     memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=chat_model,
