@@ -1,0 +1,31 @@
+Project ID,Client Name,Service Type,Start Date,End Date (Expected/Actual),Status,Project Value (USD),Methodology,Lead Consultant,Estimated Hours,Assigned Team,Client Feedback
+PROJ-001,PYME Digital S.A.,Software a Medida,2024-08-15,2025-06-30,In Progress,55000,Scrum,Ana Gómez,850,Equipo Alfa,
+PROJ-002,Innovación Web Ltda.,Transformación Digital,2025-01-10,2025-11-15,In Progress,78000,Agile,Carlos Pérez,1000,Equipo Beta,
+PROJ-003,Gestiona Fácil EIRL,Implementación ERP Personalizado,2023-11-20,2024-09-25,Completed,42000,Scrum,Luis Rodríguez,760,Equipo Delta,"Excelente acompañamiento durante todo el proceso."
+PROJ-004,Tech Solutions Corp.,Consultoría Estratégica,2025-03-01,2025-07-31,In Progress,35000,Agile,Ana Gómez,480,Equipo Alfa,
+PROJ-005,Logística Rápida SAS,Desarrollo App Móvil,2024-06-01,2025-03-10,Completed,65000,Scrum,Marta Sánchez,920,Equipo Móvil,"Muy satisfechos con el producto entregado."
+PROJ-006,Comercio Ágil SPA,Mantenimiento y Soporte,2025-04-01,,In Progress,2000/month,N/A,Javier López,30/mes,Soporte 24/7,
+PROJ-007,Servicios Cloud SRL,Migración a la Nube,2025-02-18,2025-05-30,On Hold,30000,Agile,Carlos Pérez,350,Equipo Nube,"Esperando validación interna para continuar."
+PROJ-008,Soluciones Médicas SAC,Implementación HIS,2024-09-10,2025-08-01,In Progress,92000,Scrum,Luis Rodríguez,1100,Equipo Salud,
+PROJ-009,Educa Digital SRL,Plataforma E-learning,2024-01-05,2024-12-15,In Progress,47000,Kanban,Marta Sánchez,800,Equipo E-learning,
+PROJ-010,Verde Sostenible SA,Auditoría de Sistemas,2025-05-01,2025-06-30,Planned,18000,Cascade,Javier López,240,Equipo Auditoría,
+PROJ-011,Constructiva Ltda.,Optimización de Procesos,2024-10-20,2025-04-20,In Progress,38000,Agile,Ana Gómez,600,Equipo Sigma,
+PROJ-012,Red Comercial SAS,Automatización de Ventas,2023-12-01,2024-08-15,Completed,52000,Scrum,Carlos Pérez,700,Equipo Ventas,"Muy buen resultado, aumentamos 20% en eficiencia."
+PROJ-013,DigiLegal Group,Desarrollo de Portal Legal,2025-02-01,2025-09-30,In Progress,61000,Agile,Marta Sánchez,670,Equipo Legal,
+PROJ-014,Energía Inteligente SRL,Smart Grid Software,2024-11-15,2025-12-01,Planned,88000,Scrum,Luis Rodríguez,980,Equipo Energía,
+PROJ-015,AgroTec SPA,Monitoreo Satelital,2024-07-01,2025-01-30,In Progress,69000,Scrumban,Ana Gómez,720,Equipo AgroTech,
+PROJ-016,Finanzas Modernas SA,Integración de APIs Bancarias,2025-03-10,2025-12-31,In Progress,75000,Agile,Javier López,950,Equipo Fintech,
+PROJ-017,GlobalWare Corp.,Infraestructura Cloud,2023-09-01,2024-10-01,Completed,120000,Scrum,Carlos Pérez,1300,Equipo Nube,"Trabajo impecable en tiempos muy retadores."
+PROJ-018,ConectaRed S.A.,Seguridad Informática,2025-04-15,2025-10-15,In Progress,41000,Cascade,Luis Rodríguez,530,Equipo Seguridad,
+PROJ-019,Nova ONG,Digitalización de Archivos,2024-05-01,2024-11-01,Completed,15000,Agile,Marta Sánchez,300,Equipo Archivos,"Muy agradecidos por la ayuda y profesionalismo."
+PROJ-020,Ingenia Civil EIRL,BIM Integrado,2024-08-20,2025-06-10,In Progress,54000,Scrumban,Javier López,850,Equipo Ingeniería,
+PROJ-021,Visión Industrial SAC,Sistema de Control de Producción,2025-01-05,2025-10-10,Planned,64000,Scrum,Carlos Pérez,900,Equipo Producción,
+PROJ-022,Red Educativa Andina,Desarrollo de LMS,2024-02-12,2025-01-15,In Progress,59000,Agile,Marta Sánchez,870,Equipo E-learning,
+PROJ-023,BioSalud Integral,Centro de Turnos Digital,2024-07-20,2025-04-30,In Progress,37000,Scrumban,Luis Rodríguez,600,Equipo Salud,
+PROJ-024,Estilo Urbano Ltda.,E-commerce Personalizado,2023-11-10,2024-08-10,Completed,72000,Kanban,Ana Gómez,980,Equipo Web,"Excelente interfaz, superó expectativas"
+PROJ-025,AutoTech SRL,Sistema de Diagnóstico Vehicular,2024-03-01,2025-01-30,In Progress,81000,Agile,Javier López,910,Equipo Automotriz,
+PROJ-026,Recicla YA!,Plataforma de Logística Inversa,2025-06-01,2026-02-01,Planned,55000,Scrum,Marta Sánchez,770,Equipo Verde,
+PROJ-027,Digital Finance Corp.,Optimización de Procesos Financieros,2025-04-15,2025-11-30,In Progress,69000,Cascade,Luis Rodríguez,840,Equipo Fintech,
+PROJ-028,Global AgroMarket,Marketplace Agrícola,2024-09-25,2025-06-25,In Progress,93000,Agile,Ana Gómez,1020,Equipo AgroTech,
+PROJ-029,TecnoUrbana,Gestión Inteligente de Alumbrado Público,2024-10-05,2025-08-20,Planned,61000,Scrumban,Carlos Pérez,820,Equipo SmartCity,
+PROJ-030,Alimentos del Sur,App de Pedidos Personalizada,2024-06-15,2025-03-01,In Progress,46000,Kanban,Javier López,740,Equipo Móvil,

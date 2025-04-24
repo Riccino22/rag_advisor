@@ -15,7 +15,7 @@ chat_model = ChatGroq(model_name="meta-llama/llama-4-maverick-17b-128e-instruct"
 # Generate chunks
 def get_text_chunks():
 
-    with open('manual.txt', 'r') as file:
+    with open('datasets/manual.txt', 'r') as file:
         text = file.read()
 
     text_splitter = CharacterTextSplitter(

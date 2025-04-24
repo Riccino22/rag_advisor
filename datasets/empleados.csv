@@ -1,0 +1,23 @@
+Employee ID,Name,Role/Title,Department,Start Date,Email,Location,Status,Manager/Lead
+EMP-001,Juan Pérez,Director Ejecutivo,Management,2018-01-10,juan.perez@innovatech.com,HQ - Montevideo,Active,N/A
+EMP-002,Ana Gómez,Project Manager,Projects,2019-05-20,ana.gomez@innovatech.com,Remote,Active,Juan Pérez
+EMP-003,Carlos Pérez,Digital Transformation Consultant,Projects,2020-09-15,carlos.perez@innovatech.com,HQ - Montevideo,Active,Ana Gómez
+EMP-004,Marta Sánchez,Lead Developer,Development,2019-07-01,marta.sanchez@innovatech.com,Remote,Active,Luis Fernández
+EMP-005,Luis Rodríguez,Scrum Master,Development,2021-02-28,luis.rodriguez@innovatech.com,Remote,Active,Luis Fernández
+EMP-006,Javier López,Customer Support Specialist,Customer Service,2022-11-10,javier.lopez@innovatech.com,HQ - Montevideo,Active,Elena Torres
+EMP-007,Elena Torres,Head of Customer Service,Customer Service,2020-04-03,elena.torres@innovatech.com,HQ - Montevideo,Active,Juan Pérez
+EMP-008,Sofía Giménez,HR Specialist,Human Resources,2023-01-25,sofia.gimenez@innovatech.com,HQ - Montevideo,Active,Laura Blanco
+EMP-009,Laura Blanco,Head of Human Resources,Human Resources,2019-03-18,laura.blanco@innovatech.com,HQ - Montevideo,Active,Juan Pérez
+EMP-010,Pedro Vargas,IT Support Technician,IT,2023-08-14,pedro.vargas@innovatech.com,HQ - Montevideo,Active,Ricardo Mena
+EMP-011,Ricardo Mena,IT Manager,IT,2021-06-07,ricardo.mena@innovatech.com,HQ - Montevideo,Active,Juan Pérez
+EMP-012,Luis Fernández,Head of Development,Development,2019-02-11,luis.fernandez@innovatech.com,Remote,Active,Juan Pérez
+EMP-013,Valeria Ruiz,UX/UI Designer,Development,2022-03-21,valeria.ruiz@innovatech.com,Remote,Active,Luis Fernández
+EMP-014,Andrés Caballero,Backend Developer,Development,2023-06-12,andres.caballero@innovatech.com,Remote,Active,Luis Fernández
+EMP-015,Camila Duarte,Marketing Specialist,Marketing,2021-09-30,camila.duarte@innovatech.com,HQ - Montevideo,Active,Isabel Romero
+EMP-016,Isabel Romero,Head of Marketing,Marketing,2018-11-05,isabel.romero@innovatech.com,HQ - Montevideo,Active,Juan Pérez
+EMP-017,Nicolás Estévez,Finance Analyst,Finance,2020-01-10,nicolas.estevez@innovatech.com,HQ - Montevideo,Active,Patricia Silva
+EMP-018,Patricia Silva,CFO,Finance,2017-08-15,patricia.silva@innovatech.com,HQ - Montevideo,Active,Juan Pérez
+EMP-019,Lucía Hernández,QA Engineer,Development,2022-10-25,lucia.hernandez@innovatech.com,Remote,Active,Luis Fernández
+EMP-020,Emiliano Torres,Data Analyst,IT,2021-12-06,emiliano.torres@innovatech.com,HQ - Montevideo,Active,Ricardo Mena
+EMP-021,Noelia Castro,Administrative Assistant,Management,2023-04-18,noelia.castro@innovatech.com,HQ - Montevideo,Active,Juan Pérez
+EMP-022,Tobías Morales,Content Strategist,Marketing,2023-07-01,tobias.morales@innovatech.com,Remote,Active,Isabel Romero
