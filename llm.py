@@ -8,6 +8,8 @@ from langchain_experimental.agents.agent_toolkits.python.base import create_pyth
 import ast
 import pandas as pd
 from pathlib import Path
+import json
+import time
 
 model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
 chat_model = ChatGroq(model_name="meta-llama/llama-4-scout-17b-16e-instruct", temperature=0.1)
@@ -39,10 +41,9 @@ def run_agent(prompt):
 
 # Función para manejar la conversación
 def chat(user_prompt):
-    print("¡Bienvenido al chat! (Escribe 'salir' para terminar)")
+    try:
+        print("¡Bienvenido al chat! (Escribe 'salir' para terminar)")
     
-    while True:
-        # user_prompt = input("Tú: ")
         question = model.encode([user_prompt], show_progress_bar=True, batch_size=64)
         manual_dataframe['similarity'] = manual_dataframe['embedding'].apply(lambda x: util.cos_sim(question, ast.literal_eval(x)))
         manual_dataframe.sort_values('similarity', ascending=False, inplace=True)
@@ -50,13 +51,28 @@ def chat(user_prompt):
         
         # Obtener respuesta del modelo
         final_prompt = f"""
-        Eres un experto en asesoramiento de los datos de la empresa.
-        Y esta información extraida del manual de la empresa:
-        {manual_result}
+            # CONTEXTO
+            Eres un experto en asesoramiento de datos empresariales.
 
-        * Voy a enseñarte una pregunta del usuario para que la respondas basado en la información que acabo de darte. Si la pregunta o el mensaje del usuario no tiene que ver con la empresa (como un saludo o un mensaje ambiguo), responde con normalidad sin basarte en esa información (a menos que sea necesario)
+            # INFORMACIÓN DE REFERENCIA
+            Esta información ha sido extraída del manual de la empresa:
+            {manual_result}
 
-        Esta es la pregunta del usuario que debes responder: '{user_prompt}'
+            # INSTRUCCIONES
+            1. Si la pregunta del usuario se relaciona con la empresa, responde basándote en la información proporcionada.
+            2. Si es un saludo o mensaje ambiguo, responde naturalmente sin forzar la información empresarial.
+            3. Si no conoces la respuesta basada en el manual, proporciona un JSON con esta estructura exacta:
+            ```json
+            {{
+                "resume": "Un resumen corto y conciso de lo que sabes del manual"
+            }}
+
+            # IMPORTANTE, MUY IMPORTANTE
+            4. El json con el resumen es solamente si no conoces la respuesta a la pregunta del usuario. Si la conoces, no debes incluir el resumen en json
+            5. En caso de que no sepas la respuesta y debas responder con el json, no incluyas ningun texto fuera de las llaves del json (Ejemplo: No escribas fuera del json cosas como "Desafortunadamente,..." o "No tengo información, ..."). Todo eso lo puedes incluir dentro del json pero no por fuera.
+
+
+            * La pregunta del usuario es: '{user_prompt}'
         """
         response = conversation.predict(input=final_prompt)
         memory.chat_memory.messages[-2] = HumanMessage(content=user_prompt)
@@ -71,23 +87,41 @@ def chat(user_prompt):
                 * Filas x Columnas: {df.shape}
                 * Algunos registros extraidos: '{df.sample(4).to_dict(orient='records')}' 
             """
-        agent_response = run_agent(f"""
-                  
-            El usuario hizo la siguiente pregunta: '{user_prompt}'
-            Y esta fue la respuesta del modelo: 
-            '{response}'
+        try:
+            model_response_json = json.loads(response.replace("```json", "").replace("```", ""))
+            agent_response = run_agent(f"""
+            # CONTEXTO
+            El usuario preguntó: '{user_prompt}'
+            El modelo respondió con este resumen: '{model_response_json['resume']}'
 
-            Primero, analiza si la respuesta del modelo y si la respuesta fue correcta para la pregunta del usuario entonces envia como respuesta exactamente la respuesta del modelo que te acabo de mostrar.
+            # INSTRUCCIONES
+            1. Si la respuesta del modelo fue correcta y completa, devuélvela exactamente igual.
+            2. Si la respuesta fue insuficiente y la pregunta es relevante para el contexto empresarial:
+            - Utiliza PythonREPL y pandas para analizar los archivos en 'datasets/'
+            - Archivos disponibles: {list(folder.glob("*.csv"))}
 
-            En caso de que la respuesta del modelo sea de desconocimiento o no haya respondido satisfactoriamente a la pregunta del usuario ya que no se encuentra respuesta en el manual de la empresa, y sea una pregunta válida para el contexto empresarial, entonces usa PythonREPL y pandas para leer las columnas o las filas de los archivos csv de la carpeta 'datasets' (los archivos disponibles de la carpeta 'datasets' son: {list(folder.glob("*.csv"))}) para averiguar la pregunta del usuario.
+            # INFORMACIÓN DE LOS DATASETS
+            {info_dataframes}'
 
-            Esta es información base de los archivos csv en caso de que sea de utilidad:
-            {info_dataframes}
+            # ACCIÓN REQUERIDA
+            - Si la pregunta no se relaciona con los archivos o la empresa, simplemente responde al mensaje del usuario.
+            - Mantén la respuesta concisa para optimizar velocidad.
+            """)
+            memory.chat_memory.messages[-1] = AIMessage(content=agent_response)
+            return agent_response, memory.chat_memory.messages
+        
+        except json.decoder.JSONDecodeError:
+            return response, memory.chat_memory.messages
+    
+    except Exception as e:
+        print(f"------------ Error ------------")
+        print(e)
+        time.sleep(2)
+        memory.clear()
+        return chat(user_prompt)
 
-            Si la pregunta del usuario no tiene nada que ver con esos archivos o con la empresa en general, genera una respuesta basada en su mensaje simplemente.
-        """)
-        memory.chat_memory.messages[-1] = AIMessage(content=agent_response)
-        return agent_response, memory.chat_memory.messages
+
+
 
 # Ejecutar el chat
 if __name__ == "__main__":
