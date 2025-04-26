@@ -5,42 +5,45 @@ from langchain.memory import ConversationBufferMemory
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_experimental.tools.python.tool import PythonREPLTool
 from langchain_experimental.agents.agent_toolkits.python.base import create_python_agent
+from langchain.memory import ChatMessageHistory
 import ast
 import pandas as pd
 from pathlib import Path
 import json
-import time
+import re
 
 model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
-chat_model = ChatGroq(model_name="meta-llama/llama-4-scout-17b-16e-instruct", temperature=0.1)
-manual_dataframe = pd.read_csv("datasets/embeddings.csv")
-agent_exec = create_python_agent(
+
+def run_agent(agent, prompt):
+        try:
+            return agent.run(prompt)
+        except ValueError as e:
+             print(e)
+             return run_agent(agent, prompt)
+
+# Función para manejar la conversación
+def chat(user_prompt, selected_model, chat_history):
+    chat_model = ChatGroq(model_name=selected_model, temperature=0.1)
+    agent_exec = create_python_agent(
     llm=chat_model,
     tool=PythonREPLTool(),
     verbose=True,
     handle_parsing_errors=True
-)
+    )
 
-# Inicializa la memoria
-memory = ConversationBufferMemory()
+    # Inicializa la memoria
+    memory = ConversationBufferMemory(chat_memory=ChatMessageHistory(messages=chat_history))
 
 
-# Crea una cadena de conversación con memoria
-conversation = ConversationChain(
-    llm=chat_model, 
-    memory=memory,
-    verbose=True  # Esto muestra los detalles del proceso
-)
+    # Crea una cadena de conversación con memoria
+    conversation = ConversationChain(
+        llm=chat_model, 
+        memory=memory,
+        verbose=True  # Esto muestra los detalles del proceso
+    )
+    
+    manual_dataframe = pd.read_csv("datasets/embeddings.csv")
 
-def run_agent(prompt):
-        try:
-            return agent_exec.run(prompt)
-        except ValueError as e:
-             print(e)
-             return run_agent(prompt)
-
-# Función para manejar la conversación
-def chat(user_prompt):
     try:
         print("¡Bienvenido al chat! (Escribe 'salir' para terminar)")
     
@@ -64,7 +67,7 @@ def chat(user_prompt):
             3. Si no conoces la respuesta basada en el manual, proporciona un JSON con esta estructura exacta:
             ```json
             {{
-                "resume": "Un resumen corto y conciso de lo que sabes del manual"
+                "resume": "Un resumen corto y conciso de lo que sabes del manual de unas 100 palabras aproximadamente"
             }}
 
             # IMPORTANTE, MUY IMPORTANTE
@@ -88,8 +91,10 @@ def chat(user_prompt):
                 * Algunos registros extraidos: '{df.sample(4).to_dict(orient='records')}' 
             """
         try:
-            model_response_json = json.loads(response.replace("```json", "").replace("```", ""))
-            agent_response = run_agent(f"""
+            response_content = response.replace("```json", "").replace("```", "")
+            response_content = re.search(r'\{.*?\}', response_content, re.DOTALL).group()
+            model_response_json = json.loads(response_content)
+            agent_response = run_agent(agent_exec, f"""
             # CONTEXTO
             El usuario preguntó: '{user_prompt}'
             El modelo respondió con este resumen: '{model_response_json['resume']}'
@@ -106,60 +111,20 @@ def chat(user_prompt):
             # ACCIÓN REQUERIDA
             - Si la pregunta no se relaciona con los archivos o la empresa, simplemente responde al mensaje del usuario.
             - Mantén la respuesta concisa para optimizar velocidad.
+
+            # IMPORTANTE:
+            - No menciones los archivos csv en tu respuesta final
+            - No menciones al modelo anterior como un agente aparte, ya que tu respuesta es un complemento de la del anterior
+            - En caso de que no sepas la respuesta, da una respuesta natural sin demasiados detalles.
             """)
             memory.chat_memory.messages[-1] = AIMessage(content=agent_response)
             return agent_response, memory.chat_memory.messages
         
-        except json.decoder.JSONDecodeError:
+        except (json.decoder.JSONDecodeError, AttributeError):
             return response, memory.chat_memory.messages
-    
+        
     except Exception as e:
         print(f"------------ Error ------------")
         print(e)
-        time.sleep(2)
-        memory.clear()
-        return chat(user_prompt)
-
-
-
-
-# Ejecutar el chat
-if __name__ == "__main__":
-    chat()
-# question = model.encode(['Hola'], show_progress_bar=True, batch_size=64)
-# response = chat_model.invoke({'input': 'Hola', 'chat_history': []})
-
-
-"""
-
-
-    # if st.session_state.conversation.strip():
-    #    conversation_prompt = f"
-    #  * Y toma en cuenta el contexto de la conversación:
-    #  {st.session_state.conversation}
-    #  ""
-    #    prompt += conversation_prompt
-
-    response = conversation_chain({'question': prompt, 'chat_history': st.session_state['chat_history']})
-    #messages = [
-    #    HumanMessage(content=transcription.text),
-    #    SystemMessage(content="Processing your question..."),
-    #]  
-    # response = conversation_chain()
-    st.write(response['answer'])
+        return f"Error al generar la respuesta: '{e}', prueba cambiando el modelo", memory.chat_memory.messages
     
-    # Corregir cómo se guarda el historial
-    if 'chat_history' in response:
-        for message in response['chat_history']:
-            st.session_state['chat_history'].append(message)
-    else:
-        # Fallback: guardar la pregunta y respuesta actual
-        st.session_state['chat_history'].append(HumanMessage(content=transcription.text))
-        st.session_state['chat_history'].append(AIMessage(content=response['answer']))
-        
-    print(transcription.text)
-    
-    # Mostrar historial para depuración
-    st.session_state.conversation = ""
-    
-"""

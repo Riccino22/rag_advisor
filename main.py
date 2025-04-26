@@ -14,6 +14,14 @@ load_dotenv()
 
 st.title("InnovaTech Solutions Chat")
 question_audio = st.audio_input("Pregunta algo")
+selected_model = st.selectbox("Modelo", [
+    "meta-llama/llama-4-scout-17b-16e-instruct",
+    "meta-llama/llama-4-maverick-17b-128e-instruct",
+    "deepseek-r1-distill-llama-70b",
+    "mistral-saba-24b",
+    "gemma2-9b-it"
+
+])
 question_text = st.chat_input("O tambien puedes escribir tu pregunta")
 
 if not 'chat_history' in st.session_state:
@@ -42,8 +50,13 @@ elif question_text:
 if user_input:
     
     with st.spinner("Procesando..."):
-        response, messages = chat(user_input)
-    
+        response, messages = chat(
+            user_prompt=user_input, 
+            selected_model=selected_model, 
+            chat_history=st.session_state.chat_history
+            )
+        st.session_state.chat_history.append(HumanMessage(content=user_input))
+        st.session_state.chat_history.append(AIMessage(content=response))
     st.subheader("Historial de Chat:")
     for msg in messages[::-1]:
         if isinstance(msg, HumanMessage):
