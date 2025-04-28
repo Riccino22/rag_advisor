@@ -19,7 +19,7 @@ def convert_text_to_embeddings(text):
     df = pd.DataFrame(chunks, columns=['text'])
     embeddings = model.encode(chunks, show_progress_bar=True, batch_size=64)
     df['embedding'] = embeddings.tolist()
-    df.to_csv('datasets/embeddings.csv', index=False)
+    df.to_csv('manual/embeddings.csv', index=False)
 
 def get_embeddings_dataframe(path):
     
@@ -27,7 +27,7 @@ def get_embeddings_dataframe(path):
         df = pd.read_csv(path)
     except FileNotFoundError:
 
-        with open("datasets/manual.txt", "r") as file:
+        with open("manual/manual.txt", "r") as file:
             text = file.read()
         convert_text_to_embeddings(text)
         return get_embeddings_dataframe(path)

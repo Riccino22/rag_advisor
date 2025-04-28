@@ -43,7 +43,7 @@ def chat(user_prompt, selected_model, chat_history):
         verbose=True  # Esto muestra los detalles del proceso
     )
     
-    manual_dataframe = vs.get_embeddings_dataframe("datasets/embeddings.csv")
+    manual_dataframe = vs.get_embeddings_dataframe("manual/embeddings.csv")
 
     try:
         print("¡Bienvenido al chat! (Escribe 'salir' para terminar)")
