@@ -6,6 +6,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 from langchain_experimental.tools.python.tool import PythonREPLTool
 from langchain_experimental.agents.agent_toolkits.python.base import create_python_agent
 from langchain.memory import ChatMessageHistory
+import vectorstore as vs
 import ast
 import pandas as pd
 from pathlib import Path
@@ -42,7 +43,7 @@ def chat(user_prompt, selected_model, chat_history):
         verbose=True  # Esto muestra los detalles del proceso
     )
     
-    manual_dataframe = pd.read_csv("datasets/embeddings.csv")
+    manual_dataframe = vs.get_embeddings_dataframe("datasets/embeddings.csv")
 
     try:
         print("¡Bienvenido al chat! (Escribe 'salir' para terminar)")
@@ -127,4 +128,3 @@ def chat(user_prompt, selected_model, chat_history):
         print(f"------------ Error ------------")
         print(e)
         return f"Error al generar la respuesta: '{e}', prueba cambiando el modelo", memory.chat_memory.messages
-    

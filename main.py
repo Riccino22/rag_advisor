@@ -2,7 +2,6 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 from groq import Groq
-import vectorstore as vs
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 from llm import chat
 

@@ -1,23 +1,9 @@
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import FAISS
-from langchain_groq import ChatGroq
-from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
-from langchain.embeddings import SentenceTransformerEmbeddings
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
-from dotenv import load_dotenv
-import os
-from langchain_community.vectorstores import Chroma
+from sentence_transformers import SentenceTransformer
+import pandas as pd
 
-load_dotenv()
 
-chat_model = ChatGroq(model_name="meta-llama/llama-4-maverick-17b-128e-instruct")
-# Generate chunks
-def get_text_chunks():
-
-    with open('datasets/manual.txt', 'r') as file:
-        text = file.read()
-
+def get_text_chunks(text):
     text_splitter = CharacterTextSplitter(
         separator="\n",
         chunk_size=1000,
@@ -27,21 +13,23 @@ def get_text_chunks():
     chunks = text_splitter.split_text(text)
     return chunks
 
+def convert_text_to_embeddings(text):
+    model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+    chunks = get_text_chunks(text)
+    df = pd.DataFrame(chunks, columns=['text'])
+    embeddings = model.encode(chunks, show_progress_bar=True, batch_size=64)
+    df['embedding'] = embeddings.tolist()
+    df.to_csv('datasets/embeddings.csv', index=False)
 
-# create the vectorstore
+def get_embeddings_dataframe(path):
+    
+    try:
+        df = pd.read_csv(path)
+    except FileNotFoundError:
 
-def get_vectorstore(chunks):
-
-    persist_directory = "./chroma_db"
-    embeddings_model = SentenceTransformerEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
-    vectorstore = Chroma.from_texts(texts=chunks, embedding=embeddings_model, persist_directory=persist_directory)
-    return vectorstore
-
-def get_conversation_chain(vectorstore):
-    memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
-    conversation_chain = ConversationalRetrievalChain.from_llm(
-        llm=chat_model,
-        retriever=vectorstore.as_retriever(),
-        memory=memory
-    )
-    return conversation_chain
+        with open("datasets/manual.txt", "r") as file:
+            text = file.read()
+        convert_text_to_embeddings(text)
+        return get_embeddings_dataframe(path)
+    
+    return df
