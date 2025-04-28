@@ -38,18 +38,19 @@ The system operates in two main stages:
 
 ## Project Structure
 
-.
-├── datasets/ # Folder for CSV files
-│ ├── data_file_1.csv # Example CSV file (accessible by the agent)
-│ └── ... # Other CSV files
-├──manual/ # Folder for the manual and the embeddings
-│ ├── manual.txt # Company manual (source for RAG)
-│ └── embeddings.csv # Generated file with manual embeddings
-├── llm.py # Main chat logic, RAG, and agent orchestration
-├── main.py # Streamlit application code (UI)
-├── vectorstore.py # Functions for generating and loading embeddings
-├── requirements.txt # Project dependencies
-└── .env # File to store API keys (DO NOT commit to Git)
+```bash
+├── datasets/               # Folder for CSV files
+│   ├── data_file_1.csv      # Example CSV file (accessible by the agent)
+│   └── ...                  # Other CSV files
+├── manual/                  # Folder for the manual and the embeddings
+│   ├── manual.txt           # Company manual (source for RAG)
+│   └── embeddings.csv       # Generated file with manual embeddings
+├── llm.py                   # Main chat logic, RAG, and agent orchestration
+├── main.py                  # Streamlit application code (UI)
+├── vectorstore.py           # Functions for generating and loading embeddings
+├── requirements.txt         # Project dependencies
+└── .env                     # File to store API keys (DO NOT commit to Git)
+```
 
 ## Installation and Setup
 
